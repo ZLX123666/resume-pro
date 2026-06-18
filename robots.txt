@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zlx123666.github.io/resume-pro/sitemap.xml
