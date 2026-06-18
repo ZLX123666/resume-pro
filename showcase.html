@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=750"><title>简历模板展示</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f172a;padding:20px;font-family:'PingFang SC','Microsoft YaHei',sans-serif;display:flex;flex-direction:column;align-items:center;gap:30px}
+
+/* 封面图 */
+.cover{width:710px;background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);border-radius:20px;padding:60px 40px;text-align:center;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;top:-50%;right:-30%;width:500px;height:500px;background:linear-gradient(135deg,#3b82f633,#8b5cf633);border-radius:50%;filter:blur(80px)}
+.cover h1{font-size:48px;font-weight:900;color:#fff;position:relative;margin-bottom:12px}
+.cover h1 span{background:linear-gradient(135deg,#3b82f6,#8b5cf6,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cover .sub{font-size:22px;color:#94a3b8;position:relative;margin-bottom:30px}
+.cover .stats{display:flex;justify-content:center;gap:40px;position:relative;margin-bottom:30px}
+.cover .stat{text-align:center}
+.cover .stat-num{font-size:42px;font-weight:900;color:#fff}
+.cover .stat-lbl{font-size:14px;color:#64748b;margin-top:4px}
+.cover .badge{display:inline-block;padding:10px 24px;background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:50px;color:#60a5fa;font-weight:700;font-size:16px}
+
+/* 风格卡片 */
+.card{width:710px;background:#1e293b;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+.card .preview-area{padding:30px;display:flex;align-items:center;justify-content:center}
+.card .preview-box{width:100%;height:420px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.3);position:relative}
+.card .preview-box iframe{width:220%;height:220%;border:none;transform:scale(0.454);transform-origin:0 0;pointer-events:none}
+.card .info{padding:30px;display:flex;flex-direction:column;justify-content:center}
+.card .info .num{font-size:14px;color:#3b82f6;font-weight:700;letter-spacing:2px;margin-bottom:8px}
+.card .info h3{font-size:28px;font-weight:900;color:#fff;margin-bottom:8px}
+.card .info .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.card .info .tag{padding:4px 12px;background:rgba(255,255,255,0.08);color:#94a3b8;border-radius:20px;font-size:13px}
+.card .info .desc{font-size:15px;color:#94a3b8;line-height:1.6}
+
+/* 对比图 */
+.compare{width:710px;background:#1e293b;border-radius:16px;padding:30px;text-align:center}
+.compare h3{font-size:24px;font-weight:900;color:#fff;margin-bottom:20px}
+.compare .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.compare .mini{aspect-ratio:3/4;background:#fff;border-radius:6px;overflow:hidden}
+.compare .mini iframe{width:250%;height:250%;border:none;transform:scale(0.4);transform-origin:0 0;pointer-events:none}
+
+/* 底部 CTA */
+.cta{width:710px;background:linear-gradient(135deg,#2563eb,#7c3aed);border-radius:16px;padding:40px;text-align:center}
+.cta h3{font-size:32px;font-weight:900;color:#fff;margin-bottom:8px}
+.cta p{font-size:18px;color:rgba(255,255,255,0.8);margin-bottom:20px}
+.cta .price{font-size:52px;font-weight:900;color:#fff;margin-bottom:8px}
+.cta .price small{font-size:18px;opacity:.7}
+.cta .orig{font-size:18px;color:rgba(255,255,255,0.5);text-decoration:line-through}
+</style></head><body>
+
+<!-- 封面 -->
+<div class="cover">
+  <h1>2026<span>简历模板套装</span></h1>
+  <div class="sub">7种设计风格 · 在线编辑 · 一键导出PDF</div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">7</div><div class="stat-lbl">设计风格</div></div>
+    <div class="stat"><div class="stat-num">A4</div><div class="stat-lbl">标准尺寸</div></div>
+    <div class="stat"><div class="stat-num">PDF</div><div class="stat-lbl">一键导出</div></div>
+    <div class="stat"><div class="stat-num">∞</div><div class="stat-lbl">永久使用</div></div>
+  </div>
+  <div class="badge">🎓 毕业季特惠 · 应届生/社招通用</div>
+</div>
+
+<!-- 风格1: 简约现代 -->
+<div class="card">
+  <div class="preview-area"><div class="preview-box"><iframe src="templates/1-简约现代风.html"></iframe></div></div>
+  <div class="info">
+    <div class="num">STYLE 01</div>
+    <h3>简约现代风</h3>
+    <div class="tags"><span class="tag">互联网</span><span class="tag">大厂</span><span class="tag">外企</span></div>
+    <div class="desc">蓝条点缀、干净利落，字节/阿里/腾讯HR最喜欢的排版风格，通过率最高的设计。</div>
+  </div>
+</div>
+
+<!-- 风格2: 技术极客 -->
+<div class="card">
+  <div class="info" style="order:3">
+    <div class="num">STYLE 02</div>
+    <h3>技术极客风</h3>
+    <div class="tags"><span class="tag">程序员</span><span class="tag">技术岗</span><span class="tag">暗色主题</span></div>
+    <div class="desc">深色主题+代码感设计，技能可视化进度条，让你的技术栈一眼被看见。</div>
+  </div>
+  <div class="preview-area" style="background:#0f172a"><div class="preview-box"><iframe src="templates/2-技术极客风.html"></iframe></div></div>
+</div>
+
+<!-- 风格3: 应届生 -->
+<div class="card">
+  <div class="preview-area"><div class="preview-box"><iframe src="templates/3-应届生专属.html"></iframe></div></div>
+  <div class="info">
+    <div class="num">STYLE 03</div>
+    <h3>应届生专属</h3>
+    <div class="tags"><span class="tag">校招</span><span class="tag">实习</span><span class="tag">管培生</span></div>
+    <div class="desc">突出教育背景+实习经历+校园活动，专为没有工作经验的同学优化，扬长避短。</div>
+  </div>
+</div>
+
+<!-- 风格4: 商务精英 -->
+<div class="card">
+  <div class="info" style="order:3">
+    <div class="num">STYLE 04</div>
+    <h3>商务精英风</h3>
+    <div class="tags"><span class="tag">金融</span><span class="tag">咨询</span><span class="tag">外企</span></div>
+    <div class="desc">传统排版、衬线字体，高盛/麦肯锡风格，适合金融、咨询、法律等传统行业。</div>
+  </div>
+  <div class="preview-area"><div class="preview-box"><iframe src="templates/4-商务精英风.html"></iframe></div></div>
+</div>
+
+<!-- 7风格一览 -->
+<div class="compare">
+  <h3>7 种风格 · 总有一款适合你</h3>
+  <div class="grid">
+    <div class="mini"><iframe src="templates/1-简约现代风.html"></iframe></div>
+    <div class="mini"><iframe src="templates/2-技术极客风.html"></iframe></div>
+    <div class="mini"><iframe src="templates/3-应届生专属.html"></iframe></div>
+    <div class="mini"><iframe src="templates/4-商务精英风.html"></iframe></div>
+    <div class="mini"><iframe src="templates/5-创意设计风.html"></iframe></div>
+    <div style="background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#2563eb">经典双栏</div>
+    <div style="background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#7c3aed">时间线</div>
+  </div>
+</div>
+
+<!-- 底部 -->
+<div class="cta">
+  <h3>在线编辑器 · 填表即生成</h3>
+  <p>不需要下载任何软件，浏览器打开就能用<br>填信息 → 实时预览 → 导出PDF → 投递</p>
+  <div class="orig">原价 ￥99</div>
+  <div class="price">￥19.9 <small>/ 7套</small></div>
+  <p style="color:rgba(255,255,255,0.7);font-size:14px;margin-top:8px">毕业季限时特惠 · 一次购买永久使用</p>
+</div>
+
+</body></html>
