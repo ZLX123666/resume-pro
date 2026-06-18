@@ -263,9 +263,9 @@ function renderExperiences(){
   c.innerHTML=data.experiences.map(function(e,i){
     return '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px;margin-bottom:8px">'+
       '<div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:.75rem;font-weight:700;color:#475569">经历 '+(i+1)+'</span><button onclick="removeExp('+i+')" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:.8rem">✕</button></div>'+
-      '<div class="form-row"><div class="form-group"><label>职位</label><input value="'+esc(e.title)+'" onchange="data.experiences['+i+'].title=this.value;update()"></div><div class="form-group"><label>日期</label><input value="'+esc(e.date)+'" onchange="data.experiences['+i+'].date=this.value;update()"></div></div>'+
-      '<div class="form-group"><label>公司</label><input value="'+esc(e.org)+'" onchange="data.experiences['+i+'].org=this.value;update()"></div>'+
-      '<div class="form-group"><label>描述（每行一条）</label><textarea rows="3" onchange="data.experiences['+i+'].desc=this.value;update()">'+esc(e.desc)+'</textarea></div>'+
+      '<div class="form-row"><div class="form-group"><label>职位</label><input value="'+esc(e.title)+'" oninput="data.experiences['+i+'].title=this.value;update()"></div><div class="form-group"><label>日期</label><input value="'+esc(e.date)+'" oninput="data.experiences['+i+'].date=this.value;update()"></div></div>'+
+      '<div class="form-group"><label>公司</label><input value="'+esc(e.org)+'" oninput="data.experiences['+i+'].org=this.value;update()"></div>'+
+      '<div class="form-group"><label>描述（每行一条）</label><textarea rows="3" oninput="data.experiences['+i+'].desc=this.value;update()">'+esc(e.desc)+'</textarea></div>'+
       '</div>';
   }).join('');
 }
@@ -277,9 +277,9 @@ function renderEducation(){
   c.innerHTML=data.education.map(function(e,i){
     return '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px;margin-bottom:8px">'+
       '<div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:.75rem;font-weight:700;color:#475569">教育 '+(i+1)+'</span><button onclick="removeEdu('+i+')" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:.8rem">✕</button></div>'+
-      '<div class="form-row"><div class="form-group"><label>学校</label><input value="'+esc(e.school)+'" onchange="data.education['+i+'].school=this.value;update()"></div><div class="form-group"><label>日期</label><input value="'+esc(e.date)+'" onchange="data.education['+i+'].date=this.value;update()"></div></div>'+
-      '<div class="form-group"><label>学位/专业</label><input value="'+esc(e.degree)+'" onchange="data.education['+i+'].degree=this.value;update()"></div>'+
-      '<div class="form-group"><label>备注（GPA/荣誉等）</label><input value="'+esc(e.note)+'" onchange="data.education['+i+'].note=this.value;update()"></div>'+
+      '<div class="form-row"><div class="form-group"><label>学校</label><input value="'+esc(e.school)+'" oninput="data.education['+i+'].school=this.value;update()"></div><div class="form-group"><label>日期</label><input value="'+esc(e.date)+'" oninput="data.education['+i+'].date=this.value;update()"></div></div>'+
+      '<div class="form-group"><label>学位/专业</label><input value="'+esc(e.degree)+'" oninput="data.education['+i+'].degree=this.value;update()"></div>'+
+      '<div class="form-group"><label>备注（GPA/荣誉等）</label><input value="'+esc(e.note)+'" oninput="data.education['+i+'].note=this.value;update()"></div>'+
       '</div>';
   }).join('');
 }
