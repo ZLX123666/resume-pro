@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>简历编辑器 · Resume Pro</title>
+<style>
+@page{size:A4;margin:0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f1f5f9}
+
+.top{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#1e293b;color:#fff}
+.top h2{font-size:1rem}
+.top select{padding:6px 12px;border-radius:8px;border:1px solid #555;background:#334155;color:#fff;font-size:.85rem}
+.top button{padding:7px 20px;background:#059669;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.85rem}
+
+.wrap{display:flex;height:calc(100vh - 48px)}
+.left{width:380px;background:#fff;overflow-y:auto;padding:16px;border-right:1px solid #e2e8f0}
+.right{flex:1;overflow-y:auto;padding:20px;display:flex;justify-content:center;background:#e5e7eb}
+
+.paper{width:210mm;min-height:297mm;background:#fff;padding:20mm 18mm;box-shadow:0 4px 20px rgba(0,0,0,0.1);font-size:12px;line-height:1.55}
+@media print{body{background:#fff}.top,.left{display:none}.wrap{display:block;height:auto}.right{display:block;background:#fff;padding:0;overflow:visible}.paper{box-shadow:none;width:100%;min-height:auto;padding:15mm}}
+
+.lbl{font-size:.7rem;font-weight:700;color:#475569;margin:10px 0 3px}
+.lbl:first-child{margin-top:0}
+input,textarea{width:100%;padding:7px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:.8rem;font-family:inherit}
+input:focus,textarea:focus{border-color:#3b82f6;outline:none}
+textarea{resize:vertical;min-height:50px}
+.row{display:flex;gap:6px}
+.row>*{flex:1}
+
+.section-tag{display:flex;align-items:center;justify-content:space-between;background:#f1f5f9;padding:6px 10px;border-radius:8px;margin:8px 0 4px}
+.section-tag strong{font-size:.75rem;color:#475569;text-transform:uppercase;letter-spacing:1px}
+.section-tag button{background:none;border:none;color:#3b82f6;cursor:pointer;font-size:.75rem;font-weight:700}
+
+.entry{border:1px solid #e2e8f0;border-radius:10px;padding:10px;margin-bottom:8px;background:#fafafa}
+.entry .remove{float:right;background:none;border:none;color:#ef4444;cursor:pointer;font-size:1rem;line-height:1}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h2>📋 Resume Editor</h2>
+  <div style="display:flex;gap:8px;align-items:center">
+    <select id="tpl" onchange="render()">
+      <option value="1">简约现代</option><option value="2">技术极客</option>
+      <option value="3">创意设计</option><option value="4">商务精英</option>
+      <option value="5">应届生专属</option><option value="6">经典双栏</option><option value="7">时间线</option>
+    </select>
+    <button onclick="window.print()">🖨️ 导出PDF</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="left">
+    <div class="lbl">姓名</div><input id="f_name" value="张小明" oninput="render()">
+    <div class="row"><div><div class="lbl">求职岗位</div><input id="f_title" value="高级产品经理" oninput="render()"></div><div><div class="lbl">所在地</div><input id="f_loc" value="北京" oninput="render()"></div></div>
+    <div class="row"><div><div class="lbl">邮箱</div><input id="f_email" value="zhangxm@email.com" oninput="render()"></div><div><div class="lbl">电话</div><input id="f_phone" value="138-0000-0000" oninput="render()"></div></div>
+    <div class="lbl">个人链接</div><input id="f_link" value="github.com/zhangxm" oninput="render()">
+
+    <div class="lbl">个人总结</div><textarea id="f_summary" oninput="render()" rows="3">5年产品经验，主导过3款DAU百万级产品从0到1。擅长数据驱动决策和跨团队协作。</textarea>
+
+    <div class="section-tag"><strong>工作经验</strong><button onclick="addExp()">+ 添加</button></div>
+    <div id="expList"></div>
+
+    <div class="section-tag"><strong>教育背景</strong><button onclick="addEdu()">+ 添加</button></div>
+    <div id="eduList"></div>
+
+    <div class="lbl">技能（用逗号分隔）</div><input id="f_skills" value="产品策略,数据分析,SQL,Figma,A/B测试,Python,敏捷开发" oninput="render()">
+  </div>
+
+  <div class="right">
+    <div class="paper" id="paper"></div>
+  </div>
+</div>
+
+<script>
+var exps=[{title:'高级产品经理',org:'字节跳动',date:'2022.03 - 至今',desc:'负责抖音创作者工具产品线\n主导AI剪辑功能从0到1，DAU突破50万\n重构发布流程，完成率从68%提升至89%'},{title:'产品经理',org:'美团',date:'2020.07 - 2022.02',desc:'负责商家后台管理系统优化\n设计智能定价建议功能，客单价提升18%'}];
+var edus=[{school:'北京大学',degree:'计算机科学 · 硕士',date:'2018 - 2021',note:'GPA 3.8/4.0 · 校级优秀毕业生'}];
+
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+function renderExpList(){
+  document.getElementById('expList').innerHTML=exps.map(function(e,i){
+    return '<div class="entry"><button class="remove" onclick="exps.splice('+i+',1);renderExpList();render()">✕</button>'+
+      '<div class="row"><div><div class="lbl">职位</div><input value="'+esc(e.title)+'" oninput="exps['+i+'].title=this.value;render()"></div><div><div class="lbl">日期</div><input value="'+esc(e.date)+'" oninput="exps['+i+'].date=this.value;render()"></div></div>'+
+      '<div class="lbl">公司</div><input value="'+esc(e.org)+'" oninput="exps['+i+'].org=this.value;render()">'+
+      '<div class="lbl">描述（每行一条）</div><textarea rows="3" oninput="exps['+i+'].desc=this.value;render()">'+esc(e.desc)+'</textarea>'+
+      '</div>';
+  }).join('');
+}
+function addExp(){exps.push({title:'新职位',org:'公司名称',date:'2024.01 - 至今',desc:'描述你的工作内容'});renderExpList();render()}
+
+function renderEduList(){
+  document.getElementById('eduList').innerHTML=edus.map(function(e,i){
+    return '<div class="entry"><button class="remove" onclick="edus.splice('+i+',1);renderEduList();render()">✕</button>'+
+      '<div class="row"><div><div class="lbl">学校</div><input value="'+esc(e.school)+'" oninput="edus['+i+'].school=this.value;render()"></div><div><div class="lbl">日期</div><input value="'+esc(e.date)+'" oninput="edus['+i+'].date=this.value;render()"></div></div>'+
+      '<div class="lbl">学位/专业</div><input value="'+esc(e.degree)+'" oninput="edus['+i+'].degree=this.value;render()">'+
+      '<div class="lbl">备注</div><input value="'+esc(e.note)+'" oninput="edus['+i+'].note=this.value;render()">'+
+      '</div>';
+  }).join('');
+}
+function addEdu(){edus.push({school:'学校名称',degree:'专业 · 学位',date:'2020 - 2024',note:'GPA X.X/4.0'});renderEduList();render()}
+
+function render(){
+  var tpl=+document.getElementById('tpl').value;
+  var d={
+    name:document.getElementById('f_name').value,
+    title:document.getElementById('f_title').value,
+    loc:document.getElementById('f_loc').value,
+    email:document.getElementById('f_email').value,
+    phone:document.getElementById('f_phone').value,
+    link:document.getElementById('f_link').value,
+    summary:document.getElementById('f_summary').value,
+    skills:document.getElementById('f_skills').value.split(',').map(function(s){return s.trim()}).filter(Boolean)
+  };
+  var p=document.getElementById('paper');
+  var tags=d.skills.map(function(s){return '<span class="sk">'+esc(s)+'</span>'}).join('');
+  var expH=exps.map(function(e){
+    var dd=e.desc.split('\n').filter(Boolean).map(function(l){return '<li>'+esc(l)+'</li>'}).join('');
+    return '<div class="ei"><div class="eh"><span>'+esc(e.title)+'</span><span class="ed">'+esc(e.date)+'</span></div><div class="eo">'+esc(e.org)+'</div><div class="eb"><ul>'+dd+'</ul></div></div>';
+  }).join('');
+  var eduH=edus.map(function(e){
+    return '<div class="ei"><div class="eh"><span>'+esc(e.school)+'</span><span class="ed">'+esc(e.date)+'</span></div><div class="eo">'+esc(e.degree)+'</div><div class="eb">'+esc(e.note)+'</div></div>';
+  }).join('');
+
+  var hc='<div class="hc"><span>📧 '+esc(d.email)+'</span><span>📱 '+esc(d.phone)+'</span><span>📍 '+esc(d.loc)+'</span><span>🔗 '+esc(d.link)+'</span></div>';
+  var sum=d.summary?'<div class="st">个人总结</div><p class="sp">'+esc(d.summary)+'</p>':'';
+  var sk='<div class="st">技能</div><div class="sr">'+tags+'</div>';
+
+  // Template styles defined inline
+  if(tpl===1){ // 简约现代
+    p.className='paper t1';p.innerHTML='<style>.t1 .hn{font-size:22px;font-weight:900;border-bottom:3px solid #2563eb;padding-bottom:8px;margin-bottom:2px}.t1 .ht{color:#2563eb;font-size:13px;font-weight:600;margin-bottom:4px}.t1 .hc{color:#888;font-size:10px;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.t1 .st{font-size:11px;font-weight:700;text-transform:uppercase;color:#2563eb;letter-spacing:2px;border-bottom:1px solid #e5e7eb;padding-bottom:3px;margin:12px 0 6px}.t1 .ei{margin-bottom:9px}.t1 .eh{display:flex;justify-content:space-between;font-weight:700;font-size:12px}.t1 .eo{color:#555;font-size:10px}.t1 .ed{color:#888;font-size:10px}.t1 .eb{color:#555;font-size:10px;margin-top:2px}.t1 .sp{color:#555;font-size:11px;margin-bottom:6px}.t1 .sr{display:flex;flex-wrap:wrap;gap:5px}.t1 .sk{padding:3px 10px;background:#eff6ff;color:#2563eb;border-radius:20px;font-size:10px;font-weight:600}.t1 ul{padding-left:16px;margin:2px 0}</style>'+
+      '<div class="hn">'+esc(d.name)+'</div><div class="ht">'+esc(d.title)+'</div>'+hc+sum+
+      '<div class="st">工作经验</div>'+expH+'<div class="st">教育背景</div>'+eduH+sk;
+  }else if(tpl===2){ // 技术极客
+    p.className='paper t2';p.innerHTML='<style>.t2{background:#111827;color:#e2e8f0}.t2 .hn{font-size:20px;font-weight:900;color:#f1f5f9}.t2 .ht{color:#3b82f6;font-size:11px;font-weight:600;margin-bottom:4px}.t2 .hc{color:#94a3b8;font-size:10px;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.t2 .st{font-size:10px;font-weight:700;text-transform:uppercase;color:#3b82f6;letter-spacing:3px;border-bottom:1px solid #1e3a5f;padding-bottom:3px;margin:12px 0 6px}.t2 .ei{background:rgba(59,130,246,0.05);border-left:3px solid #3b82f6;padding:7px 10px;margin-bottom:7px;border-radius:0 5px 5px 0}.t2 .eh{display:flex;justify-content:space-between;font-weight:700;font-size:12px;color:#f1f5f9}.t2 .eo{color:#3b82f6;font-size:10px}.t2 .ed{color:#64748b;font-size:9px}.t2 .eb{color:#94a3b8;font-size:10px;margin-top:2px}.t2 .sp{color:#94a3b8;font-size:11px}.t2 .sr{display:flex;flex-wrap:wrap;gap:4px}.t2 .sk{padding:2px 8px;background:rgba(59,130,246,0.15);color:#60a5fa;border-radius:3px;font-size:9px;font-weight:600}.t2 ul{padding-left:14px;margin:2px 0}</style>'+
+      '<div class="hn">'+esc(d.name)+'</div><div class="ht">'+esc(d.title)+'</div>'+hc+sum+
+      '<div class="st">Experience</div>'+expH+'<div class="st">Education</div>'+eduH+sk;
+  }else if(tpl===3){ // 创意
+    p.className='paper t3';p.innerHTML='<style>.t3{display:flex;padding:0;min-height:100%}.t3 .side{width:155px;background:linear-gradient(180deg,#f59e0b,#d97706);color:#fff;padding:24px 14px;flex-shrink:0}.t3 .side .hn{font-size:17px;font-weight:800;text-align:center;margin-bottom:2px}.t3 .side .ht{text-align:center;font-size:9px;opacity:.9;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}.t3 .side .ct{font-size:9px;opacity:.9;margin-bottom:12px;line-height:1.5}.t3 .side .st{font-size:8px;text-transform:uppercase;letter-spacing:2px;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:3px;margin-bottom:5px}.t3 .side .sk{padding:2px 6px;background:rgba(255,255,255,0.2);border-radius:8px;font-size:8px;display:inline-block;margin:1px}.t3 .main{padding:20px 16px;flex:1}.t3 .main .st{font-size:10px;text-transform:uppercase;color:#d97706;letter-spacing:3px;border-bottom:2px solid #fef3c7;padding-bottom:3px;margin:10px 0 6px}.t3 .ei{margin-bottom:7px}.t3 .eh{display:flex;justify-content:space-between;font-weight:700;font-size:11px}.t3 .eo{color:#d97706;font-size:9px;font-weight:600}.t3 .ed{font-size:9px;color:#999}.t3 .eb{color:#666;font-size:9px;margin-top:1px}.t3 .sp{color:#555;font-size:10px}.t3 .sr{display:flex;flex-wrap:wrap;gap:3px}.t3 ul{padding-left:12px;margin:1px 0}</style>'+
+      '<div class="side"><div class="hn">'+esc(d.name)+'</div><div class="ht">'+esc(d.title)+'</div>'+
+      '<div class="ct">📧 '+esc(d.email)+'<br>📱 '+esc(d.phone)+'<br>📍 '+esc(d.loc)+'<br>🔗 '+esc(d.link)+'</div>'+
+      '<div class="st">技能</div><div class="sr">'+tags+'</div></div>'+
+      '<div class="main">'+sum+'<div class="st">工作经验</div>'+expH+'<div class="st">教育</div>'+eduH+'</div>';
+  }else if(tpl===4){ // 商务
+    p.className='paper t4';p.innerHTML='<style>.t4{font-family:Georgia,serif}.t4 .hn{font-size:20px;font-weight:700;text-align:center;letter-spacing:3px;text-transform:uppercase;color:#1e3a5f}.t4 .ht{text-align:center;font-size:11px;color:#555;letter-spacing:1px;margin-bottom:6px}.t4 .hc{text-align:center;font-size:10px;color:#777;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}.t4 .divider{border:none;border-top:2px solid #1e3a5f;margin:12px 0}.t4 .st{font-size:10px;font-weight:700;text-transform:uppercase;color:#1e3a5f;letter-spacing:3px;margin:10px 0 6px}.t4 .ei{margin-bottom:8px}.t4 .eh{display:flex;justify-content:space-between;font-weight:700;font-size:11px}.t4 .eo{font-style:italic;color:#555;font-size:10px}.t4 .ed{font-size:9px;color:#888}.t4 .eb{font-size:10px;color:#555;margin-top:2px}.t4 .sp{font-size:10px;color:#555}.t4 .sr{display:flex;flex-wrap:wrap;gap:5px}.t4 .sk{padding:2px 8px;background:#f1f5f9;border-radius:3px;font-size:9px;color:#555;font-weight:600}.t4 ul{padding-left:14px}</style>'+
+      '<div class="hn">'+esc(d.name)+'</div><div class="ht">'+esc(d.title)+'</div>'+
+      '<div class="hc"><span>'+esc(d.email)+'</span><span>'+esc(d.phone)+'</span><span>'+esc(d.loc)+'</span></div>'+
+      '<hr class="divider">'+sum+
+      '<div class="st">Professional Experience</div>'+expH+'<div class="st">Education</div>'+eduH+sk;
+  }else if(tpl===5){ // 应届生
+    p.className='paper t5';p.innerHTML='<style>.t5 .hn{font-size:22px;font-weight:900;text-align:center;letter-spacing:2px}.t5 .hm{text-align:center;font-size:9px;color:#888;margin-bottom:2px}.t5 .hc{text-align:center;font-size:10px;color:#666;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}.t5 .dvd{width:50px;height:3px;background:#1a1a1a;margin:0 auto 10px}.t5 .st{font-size:11px;font-weight:700;border-bottom:1px solid #e5e7eb;padding-bottom:3px;margin:10px 0 6px;display:flex;align-items:center;gap:5px}.t5 .st::before{content:"";width:3px;height:12px;background:#1a1a1a;border-radius:2px}.t5 .ei{margin-bottom:8px}.t5 .eh{display:flex;justify-content:space-between;font-weight:700;font-size:11px}.t5 .eo{color:#555;font-size:10px}.t5 .ed{font-size:9px;color:#999}.t5 .eb{font-size:10px;color:#555;margin-top:2px}.t5 .sp{font-size:11px;color:#555}.t5 .sr{display:flex;flex-wrap:wrap;gap:4px}.t5 .sk{padding:2px 8px;background:#f1f5f9;border-radius:3px;font-size:9px;color:#555;font-weight:600}.t5 ul{padding-left:14px}</style>'+
+      '<div class="hn">'+esc(d.name)+'</div><div class="hm">男 · 22岁 · 应届毕业生</div>'+hc+'<div class="dvd"></div>'+
+      '<div class="st">求职意向</div><p style="font-size:11px;color:#555;margin-bottom:8px"><strong>'+esc(d.title)+'（校招）</strong> · '+esc(d.loc)+' · 可立即到岗</p>'+
+      '<div class="st">教育背景</div>'+eduH+
+      '<div class="st">实习/项目经历</div>'+expH+
+      (d.summary?'<div class="st">自我评价</div><p class="sp">'+esc(d.summary)+'</p>':'')+sk;
+  }else if(tpl===6){ // 经典双栏
+    var mid=Math.ceil(exps.length/2);
+    var el=exps.slice(0,mid).map(function(e){var dd=e.desc.split('\n').filter(Boolean).map(function(l){return'<li>'+esc(l)+'</li>'}).join('');return'<div class="ei"><div class="eh"><span>'+esc(e.title)+'</span></div><div class="eo">'+esc(e.org)+'</div><div class="ed">'+esc(e.date)+'</div><div class="eb"><ul>'+dd+'</ul></div></div>'}).join('');
+    var er=exps.slice(mid).map(function(e){var dd=e.desc.split('\n').filter(Boolean).map(function(l){return'<li>'+esc(l)+'</li>'}).join('');return'<div class="ei"><div class="eh"><span>'+esc(e.title)+'</span></div><div class="eo">'+esc(e.org)+'</div><div class="ed">'+esc(e.date)+'</div><div class="eb"><ul>'+dd+'</ul></div></div>'}).join('');
+    p.className='paper t6';p.innerHTML='<style>.t6{display:grid;grid-template-columns:1fr 1fr;gap:16px}.t6 .full{grid-column:1/-1}.t6 .hn{font-size:24px;font-weight:900;text-align:center;margin-bottom:2px}.t6 .ht{text-align:center;font-size:12px;color:#666;margin-bottom:6px}.t6 .hc{text-align:center;font-size:10px;color:#888;margin-bottom:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.t6 .st{font-size:10px;font-weight:700;text-transform:uppercase;color:#2563eb;letter-spacing:2px;border-bottom:2px solid #bfdbfe;padding-bottom:3px;margin:8px 0 5px}.t6 .ei{margin-bottom:6px}.t6 .eh{font-weight:700;font-size:11px}.t6 .eo{color:#2563eb;font-size:9px;font-weight:600}.t6 .ed{font-size:9px;color:#999}.t6 .eb{font-size:9px;color:#555;margin-top:1px}.t6 .sp{font-size:10px;color:#555}.t6 .sr{display:flex;flex-wrap:wrap;gap:3px}.t6 .sk{padding:2px 6px;background:#eff6ff;color:#2563eb;border-radius:8px;font-size:8px;font-weight:600}.t6 ul{padding-left:12px}</style>'+
+      '<div class="full"><div class="hn">'+esc(d.name)+'</div><div class="ht">'+esc(d.title)+'</div>'+hc+'</div>'+
+      (d.summary?'<div class="full"><div class="st">个人总结</div><p class="sp">'+esc(d.summary)+'</p></div>':'')+
+      '<div><div class="st">工作经验</div>'+el+'</div>'+
+      '<div><div class="st">教育 & 技能</div>'+eduH+'<div class="st">技能</div><div class="sr">'+tags+'</div></div>';
+  }else if(tpl===7){ // 时间线
+    var tl=exps.map(function(e){var dd=e.desc.split('\n').filter(Boolean).map(function(l){return'<li>'+esc(l)+'</li>'}).join('');return'<div style="position:relative;padding-left:18px;margin-bottom:10px;border-left:2px solid #e9d5ff"><div style="position:absolute;left:-5px;top:4px;width:8px;height:8px;border-radius:50%;background:#7c3aed"></div><div class="eh" style="display:flex;justify-content:space-between;font-weight:700;font-size:11px"><span>'+esc(e.title)+'</span><span style="font-size:9px;color:#999">'+esc(e.date)+'</span></div><div style="color:#7c3aed;font-size:9px;font-weight:600">'+esc(e.org)+'</div><div style="font-size:10px;color:#555;margin-top:2px"><ul style="padding-left:14px">'+dd+'</ul></div></div>'}).join('');
+    p.className='paper t7';p.innerHTML='<style>.t7 .hn{font-size:22px;font-weight:900;text-align:center;margin-bottom:2px}.t7 .ht{text-align:center;font-size:12px;color:#666;margin-bottom:4px}.t7 .hc{text-align:center;font-size:10px;color:#888;margin-bottom:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.t7 .st{font-size:11px;font-weight:700;text-transform:uppercase;color:#7c3aed;letter-spacing:2px;border-bottom:2px solid #ede9fe;padding-bottom:3px;margin:12px 0 8px}.t7 .ei{margin-bottom:8px}.t7 .eh{display:flex;justify-content:space-between;font-weight:700;font-size:11px}.t7 .eo{color:#555;font-size:10px}.t7 .ed{font-size:9px;color:#999}.t7 .eb{font-size:10px;color:#555;margin-top:2px}.t7 .sp{font-size:11px;color:#555}.t7 .sr{display:flex;flex-wrap:wrap;gap:4px}.t7 .sk{padding:2px 8px;background:#f5f3ff;color:#6d28d9;border-radius:10px;font-size:9px;font-weight:600}.t7 ul{padding-left:14px}</style>'+
+      '<div class="hn">'+esc(d.name)+'</div><div class="ht">'+esc(d.title)+'</div>'+hc+
+      (d.summary?'<div class="st">关于我</div><p class="sp">'+esc(d.summary)+'</p>':'')+
+      '<div class="st">工作经历</div>'+tl+
+      '<div class="st">教育背景</div>'+eduH+
+      '<div class="st">技能</div><div class="sr">'+tags+'</div>';
+  }
+}
+
+renderExpList();renderEduList();render();
+</script>
+</body>
+</html>
