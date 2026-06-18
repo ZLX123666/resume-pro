@@ -22,14 +22,12 @@
     body { background: #fff; padding: 0; }
     .page { box-shadow: none; width: 100%; min-height: auto; }
   }
-
   .sidebar {
     background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
     color: #fff; padding: 30px 20px;
     display: flex; flex-direction: column; gap: 20px;
   }
   @media print { .sidebar { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
-
   .avatar-circle {
     width: 100px; height: 100px; border-radius: 50%;
     background: rgba(255,255,255,0.2); margin: 0 auto;
@@ -37,7 +35,7 @@
     font-size: 48px;
   }
   .sidebar h1 { font-size: 20px; text-align: center; font-weight: 800; }
-  .sidebar .role { text-align: center; font-size: 12px; opacity: 0.9; letter-spacing: 2px; text-transform: uppercase; }
+  .sidebar .role { text-align: center; font-size: 12px; opacity: 0.9; letter-spacing: 2px; }
   .sidebar-section h3 {
     font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
     border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;
@@ -45,7 +43,6 @@
   .sidebar-section p, .sidebar-section li { font-size: 11px; opacity: 0.95; }
   .sidebar-section ul { list-style: none; }
   .sidebar-section li { margin-bottom: 3px; }
-
   .main { padding: 30px 24px; }
   .main-section { margin-bottom: 20px; }
   .main-section h2 {
@@ -61,7 +58,6 @@
   .item-desc { font-size: 12px; color: #666; margin-top: 2px; }
   .item-desc ul { padding-left: 14px; }
   .item-desc li { margin-bottom: 1px; }
-
   .skill-pills { display: flex; flex-wrap: wrap; gap: 5px; }
   .skill-pill { padding: 3px 10px; background: #fef3c7; color: #92400e; border-radius: 12px; font-size: 10px; font-weight: 600; }
 </style>
@@ -69,93 +65,92 @@
 <body>
 <div class="page">
 
-  <!-- 👇 Edit content -->
   <div class="sidebar">
     <div class="avatar-circle">🎨</div>
     <h1>王创意</h1>
-    <div class="role">UI/UX Designer</div>
+    <div class="role">资深UI/UX设计师</div>
 
     <div class="sidebar-section">
-      <h3>Contact</h3>
+      <h3>联系方式</h3>
       <p>📧 wangcy@email.com<br>📱 137-0000-0000<br>📍 深圳<br>🔗 dribbble.com/wangcy</p>
     </div>
 
     <div class="sidebar-section">
-      <h3>Tools</h3>
+      <h3>设计工具</h3>
       <ul>
-        <li>Figma · Expert</li>
-        <li>Sketch · Expert</li>
-        <li>Adobe XD · Advanced</li>
-        <li>Photoshop · Advanced</li>
-        <li>Illustrator · Intermediate</li>
-        <li>After Effects · Basic</li>
+        <li>Figma · 精通</li>
+        <li>Sketch · 精通</li>
+        <li>Adobe XD · 熟练</li>
+        <li>Photoshop · 熟练</li>
+        <li>Illustrator · 掌握</li>
+        <li>After Effects · 基础</li>
       </ul>
     </div>
 
     <div class="sidebar-section">
-      <h3>Languages</h3>
-      <p>中文 · Native</p>
-      <p>English · Fluent (IELTS 7.5)</p>
+      <h3>语言能力</h3>
+      <p>中文 · 母语</p>
+      <p>英语 · 流利（雅思7.5）</p>
     </div>
 
     <div class="sidebar-section">
-      <h3>Interests</h3>
+      <h3>兴趣爱好</h3>
       <p>插画 · 摄影 · 独立游戏 · 展览</p>
     </div>
   </div>
 
   <div class="main">
     <div class="main-section">
-      <h2>About Me</h2>
-      <p style="font-size:13px;color:#555;">UI/UX designer with 4 years of experience crafting delightful digital products. Passionate about design systems, micro-interactions, and accessibility. Designed interfaces used by 5M+ users.</p>
+      <h2>关于我</h2>
+      <p style="font-size:13px;color:#555;">4年UI/UX设计经验，专注打造令人愉悦的数字产品。擅长设计系统搭建、微交互设计和无障碍设计。主导设计的产品界面服务超过500万用户。</p>
     </div>
 
     <div class="main-section">
-      <h2>Experience</h2>
+      <h2>工作经历</h2>
       <div class="item">
-        <div class="item-row"><span class="item-title">Senior UI/UX Designer</span><span class="item-date">2022 - Present</span></div>
-        <div class="item-row"><span class="item-org">Tencent · WeChat Design Team</span></div>
+        <div class="item-row"><span class="item-title">高级UI/UX设计师</span><span class="item-date">2022 - 至今</span></div>
+        <div class="item-row"><span class="item-org">腾讯 · 微信设计团队</span></div>
         <div class="item-desc">
           <ul>
-            <li>Led redesign of WeChat Mini Program dashboard, improving merchant NPS by 22%</li>
-            <li>Built and maintained design system (WCSS) used across 8 product teams</li>
-            <li>Conducted 50+ user interviews and usability tests to inform design decisions</li>
+            <li>主导微信小程序商家后台改版，商家满意度提升22%</li>
+            <li>搭建并维护设计系统（WCSS），服务8个产品团队</li>
+            <li>完成50+次用户访谈和可用性测试，驱动设计决策</li>
           </ul>
         </div>
       </div>
       <div class="item">
-        <div class="item-row"><span class="item-title">UI Designer</span><span class="item-date">2020 - 2022</span></div>
-        <div class="item-row"><span class="item-org">Bytedance · Lark Design Team</span></div>
+        <div class="item-row"><span class="item-title">UI设计师</span><span class="item-date">2020 - 2022</span></div>
+        <div class="item-row"><span class="item-org">字节跳动 · 飞书设计团队</span></div>
         <div class="item-desc">
           <ul>
-            <li>Designed core collaboration features for Lark (飞书) document editor</li>
-            <li>Created 200+ icons and illustrations for the product illustration library</li>
-            <li>Won internal "Best Design Award" Q3 2021</li>
+            <li>负责飞书文档编辑器的核心协作功能设计</li>
+            <li>创作200+图标和插画，纳入产品素材库</li>
+            <li>获得2021年Q3内部"最佳设计奖"</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="main-section">
-      <h2>Education</h2>
+      <h2>教育背景</h2>
       <div class="item">
-        <div class="item-row"><span class="item-title">B.A. Visual Communication Design</span><span class="item-date">2016 - 2020</span></div>
-        <div class="item-row"><span class="item-org">China Central Academy of Fine Arts (CAFA)</span></div>
-        <div class="item-desc">Graduation Project: "Digital Nature" — Selected for Graduation Exhibition Top 10</div>
+        <div class="item-row"><span class="item-title">视觉传达设计 本科</span><span class="item-date">2016 - 2020</span></div>
+        <div class="item-row"><span class="item-org">中央美术学院</span></div>
+        <div class="item-desc">毕业作品《数字自然》——入选毕业展十佳作品</div>
       </div>
     </div>
 
     <div class="main-section">
-      <h2>Skills</h2>
+      <h2>专业技能</h2>
       <div class="skill-pills">
-        <span class="skill-pill">Design Systems</span>
-        <span class="skill-pill">User Research</span>
-        <span class="skill-pill">Prototyping</span>
-        <span class="skill-pill">Wireframing</span>
-        <span class="skill-pill">Visual Design</span>
-        <span class="skill-pill">Interaction Design</span>
-        <span class="skill-pill">Design Ops</span>
-        <span class="skill-pill">A/B Testing</span>
+        <span class="skill-pill">设计系统</span>
+        <span class="skill-pill">用户研究</span>
+        <span class="skill-pill">原型设计</span>
+        <span class="skill-pill">线框图</span>
+        <span class="skill-pill">视觉设计</span>
+        <span class="skill-pill">交互设计</span>
+        <span class="skill-pill">设计运营</span>
+        <span class="skill-pill">A/B测试</span>
         <span class="skill-pill">HTML/CSS</span>
       </div>
     </div>
