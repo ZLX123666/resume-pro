@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>简约现代风简历 - Resume Pro</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #e5e7eb;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #1a1a1a;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #fff;
+    padding: 25mm 20mm;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    line-height: 1.6;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; width: 100%; min-height: auto; padding: 20mm 18mm; }
+  }
+
+  .header { border-bottom: 3px solid #2563eb; padding-bottom: 16px; margin-bottom: 20px; }
+  .header h1 { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 4px; }
+  .header .title { color: #2563eb; font-size: 15px; font-weight: 600; }
+  .header .contact { color: #666; font-size: 12px; margin-top: 8px; display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .section { margin-bottom: 18px; }
+  .section h2 {
+    font-size: 14px; font-weight: 700; text-transform: uppercase;
+    color: #2563eb; letter-spacing: 2px; margin-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb; padding-bottom: 4px;
+  }
+  .item { margin-bottom: 14px; }
+  .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .item-title { font-weight: 700; font-size: 15px; }
+  .item-sub { color: #555; font-size: 13px; }
+  .item-date { color: #888; font-size: 12px; white-space: nowrap; }
+  .item-desc { color: #555; font-size: 13px; margin-top: 4px; }
+  .item-desc ul { padding-left: 18px; }
+  .item-desc li { margin-bottom: 3px; }
+
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    padding: 4px 14px; background: #eff6ff; color: #2563eb;
+    border-radius: 20px; font-size: 12px; font-weight: 600;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media print { .two-col { gap: 20px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 👇 从这里开始修改内容 -->
+  <div class="header">
+    <h1>张小明</h1>
+    <div class="title">高级产品经理</div>
+    <div class="contact">
+      <span>📧 zhangxm@email.com</span>
+      <span>📱 138-0000-0000</span>
+      <span>📍 北京</span>
+      <span>🔗 github.com/zhangxm</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>个人总结</h2>
+    <p style="color:#555;font-size:13px;">5年产品经验，主导过3款DAU百万级产品从0到1。擅长数据驱动决策和跨团队协作。具备技术背景（计算机硕士），能与工程师高效沟通。主导的XX功能迭代使留存率提升35%。</p>
+  </div>
+
+  <div class="section">
+    <h2>工作经验</h2>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">字节跳动 · 高级产品经理</span>
+        <span class="item-date">2022.03 - 至今</span>
+      </div>
+      <div class="item-desc">
+        <ul>
+          <li>负责抖音创作者工具产品线，管理3人产品团队，服务200万+创作者</li>
+          <li>主导AI剪辑功能从0到1，上线3个月DAU突破50万，创作者发布效率提升40%</li>
+          <li>通过数据分析和用户访谈，重构了发布流程，发布完成率从68%提升至89%</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">美团 · 产品经理</span>
+        <span class="item-date">2020.07 - 2022.02</span>
+      </div>
+      <div class="item-desc">
+        <ul>
+          <li>负责商家后台管理系统的优化，覆盖50万+活跃商家</li>
+          <li>设计并上线了智能定价建议功能，帮助商家提升客单价18%</li>
+          <li>推动商家数据分析看板的建设，提升商家经营决策效率</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>项目经历</h2>
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">AI 数据分析工具 · 个人项目</span>
+        <span class="item-date">2021.06 - 2021.12</span>
+      </div>
+      <div class="item-desc">
+        <p>独立开发了一款基于GPT的Excel数据分析插件，上传表格即可自动生成数据洞察报告。GitHub 1.2k ⭐，Product Hunt 当日排名第3。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <h2>技能</h2>
+      <div class="skills">
+        <span class="skill-tag">产品策略</span>
+        <span class="skill-tag">数据分析</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">A/B测试</span>
+        <span class="skill-tag">用户研究</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">敏捷开发</span>
+      </div>
+    </div>
+    <div class="section">
+      <h2>教育</h2>
+      <p style="font-weight:700;font-size:14px;">北京大学</p>
+      <p style="color:#555;font-size:13px;">计算机科学 · 硕士 · 2018-2021</p>
+      <p style="color:#888;font-size:12px;margin-top:4px;">GPA 3.8/4.0 · 校级优秀毕业生</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>语言能力</h2>
+    <p style="color:#555;font-size:13px;">英语 CET-6（600分）· 流利读写 · 可作为工作语言</p>
+  </div>
+  <!-- 👆 修改到这里 -->
+
+</div>
+</body>
+</html>

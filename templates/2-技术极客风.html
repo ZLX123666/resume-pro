@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>技术极客风简历 - Resume Pro</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Microsoft YaHei', monospace;
+    background: #0f172a;
+    display: flex; justify-content: center; padding: 20px; color: #e2e8f0;
+  }
+  .page {
+    width: 210mm; min-height: 297mm;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 22mm 20mm;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    line-height: 1.6;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; width: 100%; min-height: auto; background: #111827 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  .header { display: flex; gap: 20px; align-items: center; margin-bottom: 24px; }
+  .avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #8b5cf6); display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+  .header h1 { font-size: 26px; font-weight: 900; color: #f1f5f9; margin-bottom: 2px; }
+  .header .title { color: #3b82f6; font-size: 13px; font-weight: 600; }
+  .header .meta { color: #94a3b8; font-size: 11px; margin-top: 4px; }
+  .header .meta span { margin-right: 14px; }
+
+  .section { margin-bottom: 20px; }
+  .section h2 {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    color: #3b82f6; letter-spacing: 3px; margin-bottom: 12px;
+    padding-bottom: 6px; border-bottom: 1px solid #1e3a5f;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section h2::before { content: '>'; color: #f59e0b; font-weight: 900; }
+
+  .exp-item { background: rgba(59,130,246,0.05); border-left: 3px solid #3b82f6; padding: 12px 16px; margin-bottom: 12px; border-radius: 0 8px 8px 0; }
+  .exp-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .exp-title { font-weight: 700; font-size: 15px; color: #f1f5f9; }
+  .exp-date { color: #64748b; font-size: 12px; }
+  .exp-sub { color: #3b82f6; font-size: 13px; margin-bottom: 6px; }
+  .exp-desc { color: #94a3b8; font-size: 12px; }
+  .exp-desc li { margin-bottom: 3px; }
+
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill { padding: 5px 12px; background: rgba(59,130,246,0.15); color: #60a5fa; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .skill.level-up { background: rgba(139,92,246,0.2); color: #a78bfa; }
+
+  .lang-bar { margin-bottom: 8px; }
+  .lang-name { font-size: 12px; color: #cbd5e1; margin-bottom: 3px; }
+  .lang-bar-bg { height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden; }
+  .lang-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+
+  a { color: #60a5fa; text-decoration: none; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 👇 修改内容从这里开始 -->
+  <div class="header">
+    <div class="avatar">👨‍💻</div>
+    <div>
+      <h1>Alex Chen</h1>
+      <div class="title">Senior Full-Stack Engineer</div>
+      <div class="meta">
+        <span>📧 alex@email.com</span>
+        <span>🔗 github.com/alexchen</span>
+        <span>📍 上海</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>About</h2>
+    <p style="color:#94a3b8;font-size:13px;">Full-stack engineer with 6 years of experience building scalable web applications. Open source contributor (React, Next.js). Passionate about developer tools and system design. Built microservices handling 10M+ requests/day.</p>
+  </div>
+
+  <div class="section">
+    <h2>Experience</h2>
+    <div class="exp-item">
+      <div class="exp-header"><span class="exp-title">Senior Engineer @ ByteDance</span><span class="exp-date">2021 - Present</span></div>
+      <div class="exp-sub">TikTok Creator Platform · Shanghai</div>
+      <div class="exp-desc">
+        <ul>
+          <li>Architected creator analytics dashboard serving 500K+ creators</li>
+          <li>Reduced API latency by 60% with Redis caching and query optimization</li>
+          <li>Led migration from JavaScript to TypeScript across 3 frontend teams</li>
+          <li>Mentored 4 junior engineers</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-header"><span class="exp-title">Full-Stack Developer @ Alibaba</span><span class="exp-date">2019 - 2021</span></div>
+      <div class="exp-sub">Taobao Merchant Platform · Hangzhou</div>
+      <div class="exp-desc">
+        <ul>
+          <li>Built real-time order tracking system with WebSocket and React</li>
+          <li>Implemented CI/CD pipeline reducing deployment time from 30min to 3min</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Projects</h2>
+    <div class="exp-item">
+      <div class="exp-header"><span class="exp-title">OpenAPI Generator · Open Source</span><span class="exp-date">2.3k ⭐</span></div>
+      <div class="exp-desc">TypeScript library that generates type-safe API clients from OpenAPI specs. Used by 200+ teams.</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="section">
+      <h2>Tech Stack</h2>
+      <div class="skills-grid">
+        <span class="skill">TypeScript</span><span class="skill">React</span><span class="skill">Next.js</span>
+        <span class="skill">Node.js</span><span class="skill">Python</span><span class="skill">Go</span>
+        <span class="skill level-up">PostgreSQL</span><span class="skill level-up">Redis</span>
+        <span class="skill">Docker</span><span class="skill">K8s</span><span class="skill">AWS</span>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Languages</h2>
+      <div class="lang-bar"><div class="lang-name">TypeScript / JavaScript</div><div class="lang-bar-bg"><div class="lang-bar-fill" style="width:95%"></div></div></div>
+      <div class="lang-bar"><div class="lang-name">Python</div><div class="lang-bar-bg"><div class="lang-bar-fill" style="width:85%"></div></div></div>
+      <div class="lang-bar"><div class="lang-name">Go</div><div class="lang-bar-bg"><div class="lang-bar-fill" style="width:65%"></div></div></div>
+      <div class="lang-bar"><div class="lang-name">English (Working Proficiency)</div><div class="lang-bar-bg"><div class="lang-bar-fill" style="width:90%"></div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Education</h2>
+    <p style="color:#f1f5f9;font-size:13px;font-weight:600;">Zhejiang University · B.S. Computer Science · 2015-2019</p>
+  </div>
+
+</div>
+</body>
+</html>

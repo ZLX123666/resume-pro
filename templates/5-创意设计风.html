@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>创意设计风简历 - Resume Pro</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #fef7f4;
+    display: flex; justify-content: center; padding: 20px; color: #2d2d2d;
+  }
+  .page {
+    width: 210mm; min-height: 297mm;
+    background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    display: grid; grid-template-columns: 180px 1fr;
+    line-height: 1.5;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; width: 100%; min-height: auto; }
+  }
+
+  .sidebar {
+    background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+    color: #fff; padding: 30px 20px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  @media print { .sidebar { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+  .avatar-circle {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: rgba(255,255,255,0.2); margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+  }
+  .sidebar h1 { font-size: 20px; text-align: center; font-weight: 800; }
+  .sidebar .role { text-align: center; font-size: 12px; opacity: 0.9; letter-spacing: 2px; text-transform: uppercase; }
+  .sidebar-section h3 {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;
+  }
+  .sidebar-section p, .sidebar-section li { font-size: 11px; opacity: 0.95; }
+  .sidebar-section ul { list-style: none; }
+  .sidebar-section li { margin-bottom: 3px; }
+
+  .main { padding: 30px 24px; }
+  .main-section { margin-bottom: 20px; }
+  .main-section h2 {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    color: #d97706; letter-spacing: 3px; margin-bottom: 10px;
+    padding-bottom: 4px; border-bottom: 2px solid #fef3c7;
+  }
+  .item { margin-bottom: 13px; }
+  .item-row { display: flex; justify-content: space-between; align-items: baseline; }
+  .item-title { font-weight: 700; font-size: 14px; }
+  .item-org { color: #d97706; font-size: 12px; font-weight: 600; }
+  .item-date { font-size: 11px; color: #999; white-space: nowrap; }
+  .item-desc { font-size: 12px; color: #666; margin-top: 2px; }
+  .item-desc ul { padding-left: 14px; }
+  .item-desc li { margin-bottom: 1px; }
+
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .skill-pill { padding: 3px 10px; background: #fef3c7; color: #92400e; border-radius: 12px; font-size: 10px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 👇 Edit content -->
+  <div class="sidebar">
+    <div class="avatar-circle">🎨</div>
+    <h1>王创意</h1>
+    <div class="role">UI/UX Designer</div>
+
+    <div class="sidebar-section">
+      <h3>Contact</h3>
+      <p>📧 wangcy@email.com<br>📱 137-0000-0000<br>📍 深圳<br>🔗 dribbble.com/wangcy</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Tools</h3>
+      <ul>
+        <li>Figma · Expert</li>
+        <li>Sketch · Expert</li>
+        <li>Adobe XD · Advanced</li>
+        <li>Photoshop · Advanced</li>
+        <li>Illustrator · Intermediate</li>
+        <li>After Effects · Basic</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Languages</h3>
+      <p>中文 · Native</p>
+      <p>English · Fluent (IELTS 7.5)</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Interests</h3>
+      <p>插画 · 摄影 · 独立游戏 · 展览</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="main-section">
+      <h2>About Me</h2>
+      <p style="font-size:13px;color:#555;">UI/UX designer with 4 years of experience crafting delightful digital products. Passionate about design systems, micro-interactions, and accessibility. Designed interfaces used by 5M+ users.</p>
+    </div>
+
+    <div class="main-section">
+      <h2>Experience</h2>
+      <div class="item">
+        <div class="item-row"><span class="item-title">Senior UI/UX Designer</span><span class="item-date">2022 - Present</span></div>
+        <div class="item-row"><span class="item-org">Tencent · WeChat Design Team</span></div>
+        <div class="item-desc">
+          <ul>
+            <li>Led redesign of WeChat Mini Program dashboard, improving merchant NPS by 22%</li>
+            <li>Built and maintained design system (WCSS) used across 8 product teams</li>
+            <li>Conducted 50+ user interviews and usability tests to inform design decisions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-title">UI Designer</span><span class="item-date">2020 - 2022</span></div>
+        <div class="item-row"><span class="item-org">Bytedance · Lark Design Team</span></div>
+        <div class="item-desc">
+          <ul>
+            <li>Designed core collaboration features for Lark (飞书) document editor</li>
+            <li>Created 200+ icons and illustrations for the product illustration library</li>
+            <li>Won internal "Best Design Award" Q3 2021</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-section">
+      <h2>Education</h2>
+      <div class="item">
+        <div class="item-row"><span class="item-title">B.A. Visual Communication Design</span><span class="item-date">2016 - 2020</span></div>
+        <div class="item-row"><span class="item-org">China Central Academy of Fine Arts (CAFA)</span></div>
+        <div class="item-desc">Graduation Project: "Digital Nature" — Selected for Graduation Exhibition Top 10</div>
+      </div>
+    </div>
+
+    <div class="main-section">
+      <h2>Skills</h2>
+      <div class="skill-pills">
+        <span class="skill-pill">Design Systems</span>
+        <span class="skill-pill">User Research</span>
+        <span class="skill-pill">Prototyping</span>
+        <span class="skill-pill">Wireframing</span>
+        <span class="skill-pill">Visual Design</span>
+        <span class="skill-pill">Interaction Design</span>
+        <span class="skill-pill">Design Ops</span>
+        <span class="skill-pill">A/B Testing</span>
+        <span class="skill-pill">HTML/CSS</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>应届生专属简历 - Resume Pro</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f8fafc;
+    display: flex; justify-content: center; padding: 20px; color: #1e293b;
+  }
+  .page {
+    width: 210mm; min-height: 297mm;
+    background: #fff; padding: 20mm;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); line-height: 1.6;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; width: 100%; min-height: auto; padding: 18mm; }
+  }
+
+  .header { text-align: center; margin-bottom: 22px; padding-bottom: 16px; border-bottom: 2px solid #e5e7eb; }
+  .header h1 { font-size: 26px; font-weight: 900; letter-spacing: 2px; margin-bottom: 4px; }
+  .header .info { color: #64748b; font-size: 12px; }
+  .header .info span { margin: 0 10px; }
+
+  .section { margin-bottom: 18px; }
+  .section h2 {
+    font-size: 13px; font-weight: 700; color: #0f172a;
+    border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .section h2::before { content: ''; width: 4px; height: 16px; background: #0f172a; border-radius: 2px; }
+
+  .item { margin-bottom: 13px; }
+  .item-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+  .item-title { font-weight: 700; font-size: 14px; }
+  .item-sub { color: #475569; font-size: 12px; }
+  .item-date { color: #94a3b8; font-size: 11px; white-space: nowrap; }
+  .item-desc { color: #475569; font-size: 12px; margin-top: 3px; }
+  .item-desc li { margin-bottom: 2px; }
+  .item-desc ul { padding-left: 16px; }
+
+  .ed-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13px; }
+  .ed-label { color: #64748b; }
+  .ed-value { font-weight: 600; }
+
+  .skill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-dot { padding: 4px 12px; background: #f1f5f9; border-radius: 4px; font-size: 11px; color: #475569; font-weight: 600; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 👇 修改内容 -->
+  <div class="header">
+    <h1>李明华</h1>
+    <div class="info"><span>男 · 22岁</span><span>📧 limh@email.com</span><span>📱 139-0000-0000</span><span>📍 北京</span></div>
+  </div>
+
+  <div class="section">
+    <h2>求职意向</h2>
+    <p style="font-size:13px;"><strong>产品经理（校招）</strong> · 北京/上海 · 期望薪资 15K-20K · 可立即到岗</p>
+  </div>
+
+  <div class="section">
+    <h2>教育背景</h2>
+    <div class="item">
+      <div class="item-row"><span class="item-title">北京大学 · 计算机科学与技术 · 硕士</span><span class="item-date">2022.09 - 2025.06</span></div>
+      <div class="ed-grid">
+        <span class="ed-label">GPA:</span><span class="ed-value">3.8/4.0（专业前10%）</span>
+        <span class="ed-label">主修课程:</span><span class="ed-value">数据结构、算法设计、操作系统、计算机网络、数据库原理、机器学习</span>
+        <span class="ed-label">荣誉:</span><span class="ed-value">国家奖学金（2024）、校级优秀毕业生、优秀学生干部</span>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-row"><span class="item-title">武汉大学 · 软件工程 · 本科</span><span class="item-date">2018.09 - 2022.06</span></div>
+      <div class="ed-grid">
+        <span class="ed-label">GPA:</span><span class="ed-value">3.6/4.0</span>
+        <span class="ed-label">荣誉:</span><span class="ed-value">蓝桥杯省赛二等奖、校级三好学生</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>实习经历</h2>
+    <div class="item">
+      <div class="item-row"><span class="item-title">字节跳动 · 产品实习生</span><span class="item-date">2024.06 - 2024.09</span></div>
+      <div class="item-sub">抖音创作者服务平台</div>
+      <div class="item-desc">
+        <ul>
+          <li>参与创作者数据分析模块的产品设计，完成3个功能迭代</li>
+          <li>独立负责用户反馈收集与分析，整理80+条需求并推动5项优化落地</li>
+          <li>使用SQL进行数据提取和分析，为产品决策提供数据支撑</li>
+          <li>跨部门协作推动项目上线，获得mentor"优秀实习生"评价</li>
+        </ul>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-row"><span class="item-title">美团 · 产品运营实习生</span><span class="item-date">2023.07 - 2023.09</span></div>
+      <div class="item-sub">到店事业群</div>
+      <div class="item-desc">
+        <ul>
+          <li>协助运营商家活动，参与策划双11大促，活动期间GMV同比增长25%</li>
+          <li>输出竞品分析报告2份，被团队采纳并优化了商家入驻流程</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>项目经历</h2>
+    <div class="item">
+      <div class="item-row"><span class="item-title">校园二手交易平台 · 产品负责人</span><span class="item-date">2023.03 - 2023.06</span></div>
+      <div class="item-desc">
+        <ul>
+          <li>从0到1设计并推动开发了面向大学生的二手交易小程序</li>
+          <li>通过用户访谈（n=30）确定核心痛点，输出完整PRD和交互原型</li>
+          <li>上线3个月注册用户5000+，累计交易订单2000+</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <h2>技能</h2>
+      <div class="skill-row">
+        <span class="skill-dot">SQL</span><span class="skill-dot">Python</span><span class="skill-dot">Figma</span>
+        <span class="skill-dot">Axure RP</span><span class="skill-dot">Excel</span><span class="skill-dot">Tableau</span>
+        <span class="skill-dot">用户研究</span><span class="skill-dot">竞品分析</span>
+      </div>
+    </div>
+    <div class="section">
+      <h2>语言 & 其他</h2>
+      <p style="font-size:12px;color:#475569;">英语 CET-6（580分）· 雅思 7.0<br>GitHub: github.com/liminghua<br>个人博客: limh.dev</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>校园活动</h2>
+    <div class="item">
+      <div class="item-row"><span class="item-title">北京大学产品社团 · 联合创始人</span><span class="item-date">2023.03 - 至今</span></div>
+      <div class="item-desc">组织10+场产品分享会和workshop，邀请腾讯/字节/美团PM分享，覆盖500+同学。</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
